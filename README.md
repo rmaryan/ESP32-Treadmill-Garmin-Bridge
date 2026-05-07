@@ -25,3 +25,18 @@ Use an app like **nRF Connect** on your smartphone to scan for your treadmill. N
 Open the `.ino` file and update the following line with your treadmill's MAC address:
 ```cpp
 static std::string treadmillMac = "YOUR_MAC_ADDRESS_HERE";
+
+### 3. Build and Flash
+In Arduino IDE, select your board (e.g., ESP32C6 Dev Module).
+Choose the correct Serial Port.
+Click Upload.
+
+### 4. Pair with Garmin
+On your Garmin watch, go to Sensors & Accessories > Add New.
+Search for a Foot Pod or RSC Sensor.
+Select the device (it should appear as "RSC Pod" or "RSC Sensor").
+Ensure Speed and Distance are set to "Always" in the sensor settings on your watch.
+
+### Limitations
+Inclination: Currently, this bridge does not support inclination data as it uses the RSC protocol (FTMS implementation for Garmin is a work in progress).
+Compatibility: While designed for the Vigor MTT2520DC, it may work with other treadmills using similar BLE GATT services (Service 0x1826, Characteristic 0x2ACD).
