@@ -1,2 +1,27 @@
-# ESP32-Treadmill-Garmin-Bridge
-A simple ESP32-based firmware that acts as a bridge between a Bluetooth-enabled treadmill (specifically the **Vigor MTT2520DC**) and **Garmin** watches (like the Fenix 8).
+# BLE Treadmill-to-Garmin Bridge (RSC Sensor)
+
+A simple ESP32-based firmware that acts as a bridge between a Bluetooth-enabled treadmill (specifically the **Vigor MTT2520DC**) and **Garmin** watches (like the Fenix 8). 
+
+It solves the common problem of inaccurate indoor distance tracking by feeding real-time speed and cadence data from the treadmill directly to your watch via the standard **Running Speed and Cadence (RSC)** protocol.
+
+## Why this exists?
+Many modern treadmills have Bluetooth, but they often use proprietary or FTMS protocols that Garmin watches may not communicate with perfectly. This results in significant discrepancies between the treadmill's distance and what the watch records, even after calibration. This project turns an inexpensive ESP32 board into a "smart foot pod" that talks to both.
+
+## Features
+- **Real-time Synchronization:** Connects to the treadmill via BLE as a client.
+- **Standard RSC Protocol:** Emulates an RSC Sensor (Foot Pod) that is natively supported by almost all sports watches.
+- **High Accuracy:** Eliminates the need for watch-based accelerometer calibration.
+
+## Prerequisites
+- **ESP32 Dev Board** (tested on ESP32-C6).
+- **Arduino IDE** with ESP32 board support installed.
+
+## Getting Started
+
+### 1. Identify Treadmill MAC Address
+Use an app like **nRF Connect** on your smartphone to scan for your treadmill. Note down its MAC address (e.g., `d9:ed:78:01:b2:dc`).
+
+### 2. Configuration
+Open the `.ino` file and update the following line with your treadmill's MAC address:
+```cpp
+static std::string treadmillMac = "YOUR_MAC_ADDRESS_HERE";
