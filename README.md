@@ -25,6 +25,7 @@ Use an app like **nRF Connect** on your smartphone to scan for your treadmill. N
 Open the `.ino` file and update the following line with your treadmill's MAC address:
 ```cpp
 static std::string treadmillMac = "YOUR_MAC_ADDRESS_HERE";
+```
 
 ### 3. Build and Flash
 In Arduino IDE, select your board (e.g., ESP32C6 Dev Module).
